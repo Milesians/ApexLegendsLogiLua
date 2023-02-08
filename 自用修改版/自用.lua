@@ -9,9 +9,13 @@ ChangeArmorButton= 5
 UseKey = "e"
 --设置使用按键
 ---------------------------------------------------------------------------------------------------------
+EnableShake = true
+--设置是否需要抖动
 PressGun = false
 --设置是否需要压枪
-Y = {53933,47409,40700,25003,4411}
+DisableCapsLock= true
+--是否始终开启抖枪
+Y = {53933,46271,47409,44085,42400,40700,25003,4411}
 --换甲坐标--按中键获取
 ---------------------------------
 Frequency = 6
@@ -19,7 +23,7 @@ Adjustment = 0
 --------------------------------------
 
 --LeftRightRange = (6 // (LMD * ADS)) + 3 + Adjustment
-LeftRightRange = 3
+LeftRightRange = 2
 Decline_range = 8 * LMD
 
 -- utils start
@@ -67,9 +71,11 @@ function OnEvent(event, arg)
     local time = 0
     local fast_decline = LeftRightRange * 12
 
-    if (IsKeyLockOn("capslock")) then
+    if (IsKeyLockOn("capslock") or DisableCapsLock) then
         while (IsMouseButtonPressed(3)) do
-            if (IsMouseButtonPressed(1)) then
+            while (IsMouseButtonPressed(1)) do
+
+      --      if (IsMouseButtonPressed(1)) then
                 MoveMouseRelative(LeftRightRange, -LeftRightRange)
                 BetterSleep(Frequency)
                 time = time + Frequency
