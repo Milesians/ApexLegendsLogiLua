@@ -1,9 +1,6 @@
-Xian_Yu_ID = "ID:tb305645003" 
---请认准作者闲鱼ID：tb305645003    
-Xian_Yu = "Hong_Shi_Liu_De_Ou_Zhou_Bai_La_45_46" 
---闲鱼昵称:红石榴的欧洲白蜡45 46   
-FangWei = "请认准作者闲鱼ID:tb305645003_昵称:红石榴的欧洲白蜡45_46" 
---倒卖可耻，倒卖无售后无更新   
+Xian_Yu_ID = "ID:aaaaa" 
+Xian_Yu = "aaaaaaaaaaaa" 
+FangWei = "aaaaaaaaaaaa" 
 
 
 Kai_Jing = 1
