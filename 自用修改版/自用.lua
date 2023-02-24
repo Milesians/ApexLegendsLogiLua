@@ -18,12 +18,13 @@ DisableCapsLock= true
 Y = {53933,46271,47409,44085,42400,40700,25003,4411}
 --换甲坐标--按中键获取
 ---------------------------------
-Frequency = 6
+Frequency = 20
 Adjustment = 0
 --------------------------------------
 
 --LeftRightRange = (6 // (LMD * ADS)) + 3 + Adjustment
-LeftRightRange = 2
+Range = 1
+Decline = 2
 Decline_range = 8 * LMD
 
 -- utils start
@@ -68,29 +69,25 @@ function OnEvent(event, arg)
     end
     -- 换甲 end
 
-    local time = 0
-    local fast_decline = LeftRightRange * 12
 
     if (IsKeyLockOn("capslock") or DisableCapsLock) then
         while (IsMouseButtonPressed(3)) do
             while (IsMouseButtonPressed(1)) do
 
-      --      if (IsMouseButtonPressed(1)) then
-                MoveMouseRelative(LeftRightRange, -LeftRightRange)
+                MoveMouseRelative(-Range, Range * 2)
                 BetterSleep(Frequency)
-                time = time + Frequency
-                MoveMouseRelative(-LeftRightRange, LeftRightRange)
+                MoveMouseRelative(Range, -Range * 2)
                 BetterSleep(Frequency)
-
-                time = time + Frequency
-                if (time >= Decline_range and PressGun) then
-                    MoveMouseRelative(0, ((fast_decline // 12) + 1))
-                    time = 0
-                    if (fast_decline > 0) then
-                        fast_decline = fast_decline - 2
-                    else
-                        fast_decline = 0
-                    end
+                MoveMouseRelative(-Range, Range * 2)
+                BetterSleep(Frequency)
+                MoveMouseRelative(Range, -Range * 2)
+                BetterSleep(Frequency)
+                MoveMouseRelative(-Range, Range * 2)
+                BetterSleep(Frequency)
+                MoveMouseRelative(Range, -Range * 2)
+                BetterSleep(Frequency)
+                if (PressGun) then
+                    MoveMouseRelative(0, Decline)
                 end
             end
         end
