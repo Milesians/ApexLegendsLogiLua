@@ -18,23 +18,15 @@ Range = 2
 Decline = 2
 --控制压枪的幅度
 
--- utils start
-function BetterSleep(t)
-    local sleep_start_time = GetRunningTime()
-    repeat
-        local sleep_end_time = GetRunningTime()
-        local sleep_elapsed = sleep_end_time - sleep_start_time
-    until (sleep_elapsed > t)
-end
--- utils end
+
 -- 换甲
 
 function ChangeArmor()
     for key, value in ipairs(Y) do
         MoveMouseTo(12909, value)
-        BetterSleep(13)
+        Sleep(13)
         PressAndReleaseMouseButton(1)
-        BetterSleep(13)
+        Sleep(13)
     end
     PressAndReleaseKey("TAB")
 end
@@ -52,9 +44,9 @@ function OnEvent(event, arg)
 
     if (event == "MOUSE_BUTTON_PRESSED" and arg == ChangeArmorButton) then
         PressKey(UseKey)
-        BetterSleep(500)
+        Sleep(500)
         ReleaseKey(UseKey)
-        BetterSleep(50)
+        Sleep(50)
         ChangeArmor()
     end
     -- 换甲 end
@@ -63,17 +55,17 @@ function OnEvent(event, arg)
         while (IsMouseButtonPressed(3)) do
             if (IsMouseButtonPressed(1)) then
                 MoveMouseRelative(-Range, Range)
-                BetterSleep(Frequency)
+                Sleep(Frequency)
                 MoveMouseRelative(Range, -Range)
-                BetterSleep(Frequency)
+                Sleep(Frequency)
                 MoveMouseRelative(-Range, Range)
-                BetterSleep(Frequency)
+                Sleep(Frequency)
                 MoveMouseRelative(Range, -Range)
-                BetterSleep(Frequency)
+                Sleep(Frequency)
                 MoveMouseRelative(-Range, Range)
-                BetterSleep(Frequency)
+                Sleep(Frequency)
                 MoveMouseRelative(Range, -Range)
-                BetterSleep(Frequency)
+                Sleep(Frequency)
                 if (PressGun) then
                     MoveMouseRelative(0, Decline)
                 end
