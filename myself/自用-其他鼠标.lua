@@ -67,4 +67,5 @@ while (true) do
     if IsMouseButtonPressed(3) then
         Shake()
     end
+    sleep(10)
 end
